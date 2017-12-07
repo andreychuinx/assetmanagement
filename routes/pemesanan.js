@@ -39,14 +39,13 @@ Router.post('/add', (req, res) => {
   Model.Barang.findById(req.body.barang)
   .then((barang) => {
     if (barang != null) {
-      Model.TempatBarang.findOne({
+      Model.Barang.findOne({
         where: {
-          BarangId: req.body.barang
+          id: req.body.barang
         }
       })
-      .then((tempatbarang) => {
-        if (tempatbarang.quantity >= req.body.quantity) {
-          console.log(tempatbarang);
+      .then((masterbarang) => {
+        if (masterbarang.stock >= req.body.quantity) {
           let objPemesanan = {
             UserId      : res.locals.userSession.id,
             BarangId    : req.body.barang,
@@ -80,7 +79,7 @@ Router.post('/add', (req, res) => {
               sidebar     : 'pemesanan',
               pemesanan   : false,
               barang      : barang,
-              errMessage  : `Quantity peminjaman melebihi dari quantity asset (${tempatbarang.quantity}) !!`,
+              errMessage  : `Quantity peminjaman melebihi dari stock barang (${masterbarang.stock}) !!`,
             })
           })
         }
@@ -136,13 +135,13 @@ Router.get('/edit/:id', (req, res) => {
 })
 
 Router.post('/edit/:id', (req, res) => {
-  Model.TempatBarang.findOne({
+  Model.Barang.findOne({
     where: {
-      BarangId: req.body.barang
+      id: req.body.barang
     }
   })
-  .then((tempatbarang) => {
-    if (tempatbarang.quantity >= req.body.quantity) {
+  .then((masterbarang) => {
+    if (masterbarang.stock >= req.body.quantity) {
       let objPemesanan = {
         // id          : req.params.id,
         // UserId      : res.locals.userSession.id,
@@ -198,7 +197,7 @@ Router.post('/edit/:id', (req, res) => {
             sidebar     : 'pemesanan',
             pemesanan   : pemesanan,
             barang      : barang,
-            errMessage  : `Quantity peminjaman melebihi dari quantity asset (${tempatbarang.quantity}) !!`,
+            errMessage  : `Quantity peminjaman melebihi dari stock barang (${masterbarang.stock}) !!`,
           })
         })
       })
