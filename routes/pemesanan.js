@@ -2,18 +2,30 @@ const express   = require('express')
 const Model     = require('../models')
 const Sequelize = require('sequelize')
 const Router    = express.Router()
-const title     = 'Data Sewa Barang'
+const title     = 'Data Pinjam Barang'
 
 Router.get('/', (req, res) => {
-  Model.RequestBarang.findAll({
-    // where: {
-    //   UserId: res.locals.userSession.id
-    // },
-    attributes: ['id', 'quantity', 'tgl_pinjam', 'approval'],
-    order: ['tgl_pinjam'],
-    include: [Model.Barang]
-  })
+  var filterQuery
+
+  if (res.locals.userSession.role == 'admin') {
+    filterQuery = {
+      attributes: ['id', 'quantity', 'tgl_pinjam', 'approval'],
+      order: ['tgl_pinjam'],
+      include: [Model.Barang, Model.User]
+    }
+  } else {
+    filterQuery = {
+      where: {
+        UserId: res.locals.userSession.id
+      },
+      attributes: ['id', 'UserId', 'BarangId', 'quantity', 'tgl_pinjam', 'approval'],
+      order: ['tgl_pinjam'],
+      include: [Model.Barang, Model.User]
+    }
+  }
+  Model.RequestBarang.findAll(filterQuery)
   .then(pemesanan => {
+    // console.log(pemesanan);
     res.render('./pemesanan', {
       title     : title,
       sidebar   : 'pemesanan',

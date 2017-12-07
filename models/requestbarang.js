@@ -49,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
 
   RequestBarang.associate = function (models) {
     RequestBarang.belongsTo(models.Barang)
+    RequestBarang.belongsTo(models.User)
   }
 
   return RequestBarang;

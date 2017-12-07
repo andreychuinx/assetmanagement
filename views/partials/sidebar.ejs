@@ -19,9 +19,9 @@
       <li>
         <a href="#"><i class="fa fa-list-ul fa-fw"></i> Menu Transaksi<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li <% if (sidebar == 'pemesanan') { %> class="active" <% } %>><a href="/pemesanan"><i class="fa fa-table fa-fw"></i> Sewa Barang</a></li>
+          <li <% if (sidebar == 'pemesanan') { %> class="active" <% } %>><a href="/pemesanan"><i class="fa fa-table fa-fw"></i> Pinjam Barang</a></li>
           <% if (userSession.role === 'admin') { %>
-          <li <% if (sidebar == 'approval') { %> class="active" <% } %>><a href="/approval"><i class="fa fa-table fa-fw"></i> Approval Sewa</a></li>
+          <li <% if (sidebar == 'approval') { %> class="active" <% } %>><a href="/approval"><i class="fa fa-table fa-fw"></i> Approval Pinjam</a></li>
           <% } %>
         </ul>
       </li>
@@ -30,7 +30,7 @@
       <li>
         <a href="#"><i class="fa fa-list-ul fa-fw"></i> Data Laporan<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li <% if (sidebar == 'report_pemesanan') { %> class="active" <% } %>><a href="/report_pemesanan">Sewa Barang</a></li>
+          <li <% if (sidebar == 'report_pinjam') { %> class="active" <% } %>><a href="/report_pinjam">Pinjam Barang</a></li>
           <% if (userSession.role === 'admin') { %>
           <li <% if (sidebar == 'report_history') { %> class="active" <% } %>><a href="/report_history">History Asset</a></li>
           <% } %>

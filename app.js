@@ -12,6 +12,7 @@ const barangRoutes      = require('./routes/barang')
 const tempatRoutes      = require('./routes/tempat')
 const tempatBarangRoutes = require('./routes/tempatbarang')
 const reqBarangRoutes   = require('./routes/pemesanan')
+const repPinjamRoutes   = require('./routes/report_pinjam')
 const app               = express()
 
 
@@ -37,6 +38,7 @@ app.use('/barang', barangRoutes)
 app.use('/tempat', authSession.checkSession, tempatRoutes)
 app.use('/tempatbarang', tempatBarangRoutes)
 app.use('/pemesanan', authSession.checkSession, reqBarangRoutes)
+app.use('/report_pinjam', authSession.checkSession, repPinjamRoutes)
 
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))
