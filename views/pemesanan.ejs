@@ -49,13 +49,13 @@
                         <td><%= i + 1 %></td>
                         <td><%= userSession.email %></td>
                         <td><%= pemesanan[i].Barang.nama_barang %></td>
-                        <td><%= pemesanan[i].quantity %></td>
+                        <td align="center"><%= pemesanan[i].quantity %></td>
                         <td><%= pemesanan[i].tgl_pinjam.toLocaleDateString() %></td>
                         <td><%= status_approval %></td>
                         <td class="text-center">
                           <% if (pemesanan[i].approval == 0) { %>
-                            <a href="/pemesanan/edit/<%= pemesanan[i].Barang.id %>" class="btn btn-primary btn-circle"><i class="fa fa-edit"></i></a>
-                            <a href="/pemesanan/delete/<%= pemesanan[i].Barang.id %>" class="btn btn-danger btn-circle" onclick="return confirm('Are you sure want to delete ?')"><i class="fa fa-remove"></i></a>
+                            <a href="/pemesanan/edit/<%= pemesanan[i].id %>" class="btn btn-primary btn-circle"><i class="fa fa-edit"></i></a>
+                            <a href="/pemesanan/delete/<%= pemesanan[i].id %>" class="btn btn-danger btn-circle" onclick="return confirm('Are you sure want to delete ?')"><i class="fa fa-remove"></i></a>
                           <% } %>
                         </td>
                       </tr>
