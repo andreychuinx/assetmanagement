@@ -124,20 +124,18 @@ Router.get('/edit/:id', (req, res) => {
                 barang: false,
                 errMessage: false,
                 title: 'Barang',
-                sidebar: 'barang'
+                sidebar: 'asset'
             })
         })
 })
 
 Router.post('/edit/:id', function (req, res) {
     let quantityEdit = Number(req.body.quantity)
-    console.log('find one cari barangId')
     Model.TempatBarang.findOne({
         where : {
             id : req.params.id
         }
     }).then(function (dataTempatBarang) {
-        console.log('findone cari data quantity gudang')
         Model.TempatBarang.findOne({
             attributes : ['id','quantity'],
             where : {
@@ -181,7 +179,7 @@ Router.post('/edit/:id', function (req, res) {
                                             barang: false,
                                             errMessage: 'Salah input',
                                             title: 'Barang',
-                                            sidebar: 'barang'
+                                            sidebar: 'asset'
                                         })
                                     })
                             })
@@ -203,12 +201,12 @@ Router.post('/edit/:id', function (req, res) {
                             barang: false,
                             errMessage: 'Quantity Lebih dari stock',
                             title: 'Barang',
-                            sidebar: 'barang'
+                            sidebar: 'asset'
                         })
                     })
             }
         })
-        
+
     })
 })
 

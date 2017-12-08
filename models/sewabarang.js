@@ -6,5 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     status_pinjam: DataTypes.INTEGER,
     status_barang: DataTypes.STRING
   });
+  SewaBarang.associate = function (models) {
+    SewaBarang.belongsTo(models.RequestBarang)
+  }
+
   return SewaBarang;
 };
