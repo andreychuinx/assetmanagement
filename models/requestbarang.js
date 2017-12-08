@@ -29,7 +29,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     tgl_pinjam: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      validate: {
+        customValidation: function(value, next) {
+          let now = new Date()
+          let dateNow = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+          let dateInput = new Date(value.getFullYear(), value.getMonth(), value.getDate())
+          if (dateInput > dateNow) {
+            next()
+          } else {
+            next('Tanggal pinjam tidak boleh diinput tanggal sebelum hari ini !!')
+          }
+        }
+      }
     },
     approval: DataTypes.INTEGER,
     keterangan: DataTypes.STRING

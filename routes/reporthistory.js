@@ -19,6 +19,18 @@ Router.get('/', (req, res) => {
         })
 })
 
+Router.get('/filtering', (req, res) =>{
+    Model.Barang.findAll().then(function (result) {
+        res.render('filtering_report_barang', {
+            barang : result,
+            title : 'Filtering Report',
+            sidebar : 'report_history',
+            errMessage : false
+        })
+    })
+    
+})
+
 
 
 module.exports = Router;
