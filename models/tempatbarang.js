@@ -20,5 +20,13 @@ module.exports = function (sequelize, DataTypes) {
     })
     TempatBarang.belongsTo(models.Barang)
   }
+
+  TempatBarang.prototype.showStatus = function() {
+    if(this.isUpdated == 0){
+      return 'Live Data'
+    }else{
+      return 'Data Recording'
+    }
+  }
   return TempatBarang;
 };

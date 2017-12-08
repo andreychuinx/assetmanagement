@@ -29,30 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     tgl_pinjam: {
-      type: DataTypes.DATE,
-      // validate: {
-      //   customValidation: function(value, next) {
-      //     let now = new Date()
-      //     let dateNow = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-      //     let dateInput = new Date(value.getFullYear(), value.getMonth(), value.getDate())
-      //
-      //
-      //     console.log(dateInput <= dateNow);
-      //     console.log('dateInput: ' + dateInput + ' ||| dateNow: ' + dateNow);
-      //
-      //     // let dateInput = new Date(value.getDate(), )
-      //     // var anotherDate = new Date(value.toISOString())
-      //     // let result = isFinite(value = this.convert(value).valueOf()) && isFinite(dateNow = this.convert(dateNow).valueOf()) ? (value > dateNow)-(value < dateNow) : NaN
-      //
-      //     // console.log(anotherDate);
-      //     // console.log('valueee: ' + value, typeof value);
-      //     // console.log('dateNow: ' + dateNow);'dateInput: ' +
-      //     // console.log(value >= dateNow);
-      //     // console.log(value + ' == ' + dateNow);
-      //
-      //
-      //   }
-      // }
+      type: DataTypes.DATE
     },
     approval: DataTypes.INTEGER,
     keterangan: DataTypes.STRING
@@ -60,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
 
   RequestBarang.associate = function (models) {
     RequestBarang.belongsTo(models.Barang)
+    RequestBarang.belongsTo(models.User)
   }
 
   return RequestBarang;

@@ -98,6 +98,7 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.Barang, {
       through: 'RequestBarang'
     })
+    User.hasMany(models.RequestBarang)
   }
 
   return User;

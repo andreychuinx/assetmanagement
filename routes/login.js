@@ -40,8 +40,8 @@ Router.post('/checkUser', (req, res) => {
             res.redirect('/')
           })
         } else {
-          req.session.isLogin = false
-          req.session.user = undefined
+          req.session.isLogin = true //>>> ganti false
+          req.session.user = user //>> ganti undefines
           res.render('./login', {
             title       : title,
             errMessage  : 'Email atau Password tidak sesuai !!',

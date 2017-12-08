@@ -3,6 +3,7 @@ const Router = express.Router()
 const Model = require('../models')
 
 Router.get('/', (req, res) => {
+    
     Model.Barang.findAll({ order: [['nama_barang', 'ASC']] })
         .then(result => {
             console.log(result)
