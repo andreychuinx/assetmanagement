@@ -76,6 +76,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     instanceMethods: {
       comparePassword: function (userPassword, callback) {
+        
         bcrypt.compare(userPassword, this.password)
         .then((isMatch) => {
           callback(isMatch)

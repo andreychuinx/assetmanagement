@@ -142,7 +142,6 @@ Router.get('/delete/:id', function (req, res){
         }else{
             Model.Barang.findAll({ order: [['nama_barang', 'ASC']] })
             .then(result => {
-                console.log(result)
                 res.render('barang', {
                     barang: result,
                     errMessage : 'Barang telah di distribusi',
